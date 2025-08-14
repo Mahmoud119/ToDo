@@ -10,6 +10,20 @@
         
         <item name="cornerSize">50%</item>
     </style>
-
+<style name="text18Bold">
+    <item name="android:textSize">18sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">@color/black</item>
+</style>
+    <style name="text22Bold">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="text24Bold">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
     <style name="Theme.ToDo" parent="Base.Theme.ToDo" />
 </resources>

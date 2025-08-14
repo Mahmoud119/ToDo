@@ -12,6 +12,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initListeners()
+    }
 
+    private fun initListeners() {
+        binding.fab.setOnClickListener {
+            val addTodoFragment = AddToDoBottomSheet()
+            addTodoFragment.show(supportFragmentManager,null)
+        }
     }
 }
