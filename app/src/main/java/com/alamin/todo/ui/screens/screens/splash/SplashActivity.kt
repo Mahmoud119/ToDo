@@ -1,4 +1,4 @@
-package com.alamin.todo
+package com.alamin.todo.ui.screens.screens.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 
 import androidx.appcompat.app.AppCompatActivity
+import com.alamin.todo.R
+import com.alamin.todo.ui.screens.screens.main.MainActivity
 
 
 @SuppressLint("CustomSplashScreen")

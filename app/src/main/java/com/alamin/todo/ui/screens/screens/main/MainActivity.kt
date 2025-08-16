@@ -1,8 +1,9 @@
-package com.alamin.todo
+package com.alamin.todo.ui.screens.screens.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alamin.todo.databinding.ActivityMainBinding
+import com.alamin.todo.ui.screens.screens.add_todo.AddToDoBottomSheet
 
 
 class MainActivity : AppCompatActivity() {
