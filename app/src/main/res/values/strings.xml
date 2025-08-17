@@ -3,4 +3,5 @@
     <string name="ic_settings">ic_settings</string>
     <string name="ic_list">ic_list</string>
     <string name="add_new_task">Add New Task</string>
+    <string name="delete">delete</string>
 </resources>

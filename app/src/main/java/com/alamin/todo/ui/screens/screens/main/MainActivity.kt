@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initListeners()
+        showFragment(TodoListFragment())
     }
 
     private fun initListeners() {
