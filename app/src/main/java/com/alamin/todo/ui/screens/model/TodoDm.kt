@@ -1,4 +1,20 @@
 package com.alamin.todo.ui.screens.model
 
-data class TodoDm(val title: String, val description: String, val date: Long, val isdone : Boolean) {
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "todo")
+data class TodoDm(
+    @PrimaryKey(autoGenerate = true)
+    val id : Int,
+    @ColumnInfo(name = "title")
+    val title: String,
+    @ColumnInfo(name = "description")
+    val description: String,
+    @ColumnInfo (name = "date")
+    val date: Long,
+    @ColumnInfo(name = "isdone")
+    val isdone : Boolean
+) {
 }
