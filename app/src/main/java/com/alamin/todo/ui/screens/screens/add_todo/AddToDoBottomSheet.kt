@@ -4,18 +4,17 @@ package com.alamin.todo.ui.screens.screens.add_todo
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-
 import com.alamin.todo.databinding.ActivityAddToDoBottomSheetBinding
+import com.alamin.todo.ui.screens.database.Dao.MyDatabase
+import com.alamin.todo.ui.screens.model.TodoDm
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Calendar
 
 
-class AddToDoBottomSheet : BottomSheetDialogFragment() {
+class AddToDoBottomSheet (var onAddClick: ()-> Unit): BottomSheetDialogFragment() {
 
     lateinit var binding: ActivityAddToDoBottomSheetBinding
     var selectedDate = Calendar.getInstance()
@@ -64,8 +63,14 @@ class AddToDoBottomSheet : BottomSheetDialogFragment() {
 
     private fun initListeners() {
         binding.addBotton.setOnClickListener {
-            if (isValidFor()) {
-            }
+            if (!isValidFor()) return@setOnClickListener
+            val title = binding.titleInputLayout.editText!!.text.toString().trim()
+            val description = binding.descriptionInputLayout.editText!!.text.toString().trim()
+            val date = selectedDate.timeInMillis
+            val todo = TodoDm(title = title, description = description, date = date, isdone = false, id = 0)
+            MyDatabase.getInstance().getTodoDao().addTodo(todo)
+            dismiss()
+            onAddClick()
         }
         binding.selectedDateTv.setOnClickListener {
             showDatePickerDialog()
@@ -78,12 +83,14 @@ class AddToDoBottomSheet : BottomSheetDialogFragment() {
 
     private fun showTimePickerDialog() {
         val picker =
-            TimePickerDialog(requireContext(),
+            TimePickerDialog(
+                requireContext(),
                 { p0, hour, minute ->
                     selectedDate[Calendar.HOUR] = hour
                     selectedDate[Calendar.MINUTE] = minute
                     bindTime()
-                }, selectedDate.get(Calendar.HOUR), selectedDate.get(Calendar.MINUTE),  true)
+                }, selectedDate.get(Calendar.HOUR), selectedDate.get(Calendar.MINUTE), true
+            )
         picker.show()
     }
 

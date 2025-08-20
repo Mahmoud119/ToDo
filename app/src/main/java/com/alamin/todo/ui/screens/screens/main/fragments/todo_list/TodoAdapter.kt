@@ -1,5 +1,6 @@
 package com.alamin.todo.ui.screens.screens.main.fragments.todo_list
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,11 +30,18 @@ class TodoAdapter(var todos : List<TodoDm>) : RecyclerView.Adapter<TodoAdapter.T
 
     override fun getItemCount(): Int = todos.size
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(newtodos : List<TodoDm>){
+        todos=newtodos
+        notifyDataSetChanged()
+
+    }
+
     var itemClickListener : ItemClickListener? = null
     interface ItemClickListener {
         fun onItemClick(todo: TodoDm)
         fun onDoneClick(todo : TodoDm)
-        
+
     }
     class TodoViewHolder(val binding : ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
 

@@ -15,20 +15,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        Room.databaseBuilder(this, MyDatabase::class.java, "todo_database")
+//            .build()
 
+        setContentView(binding.root)
         initListeners()
-        showFragment(TodoListFragment())
+        showFragment(todoListFragment)
     }
 
+    val todoListFragment = TodoListFragment()
     private fun initListeners() {
         binding.fab.setOnClickListener {
-            val addTodoFragment = AddToDoBottomSheet()
+            val addTodoFragment = AddToDoBottomSheet{
+                todoListFragment.refreshTodos()
+            }
             addTodoFragment.show(supportFragmentManager, null)
         }
         binding.bottomNavBar.setOnItemSelectedListener {
             if (it.itemId == R.id.ic_list) {
-                showFragment(TodoListFragment())
+                showFragment(todoListFragment)
             } else if (it.itemId == R.id.ic_settings) {
                 showFragment(SettingsFragment())
             }
