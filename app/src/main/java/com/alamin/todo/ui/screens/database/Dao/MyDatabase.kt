@@ -18,7 +18,7 @@ abstract class MyDatabase : RoomDatabase() {
       fun init(context : Context){
          if (database == null){
             database = Room.databaseBuilder(context,MyDatabase::class.java,"todo_database")
-               .fallbackToDestructiveMigration(true)
+               .fallbackToDestructiveMigration()
                .allowMainThreadQueries()
                .build()
          }

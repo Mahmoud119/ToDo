@@ -25,6 +25,9 @@ class TodoAdapter(var todos : List<TodoDm>) : RecyclerView.Adapter<TodoAdapter.T
         holder.binding.checkImgv.setOnClickListener {
             itemClickListener?.onDoneClick(todo)
         }
+        holder.binding.deleteView.setOnClickListener {
+            itemClickListener?.onDeleteClick(todo)
+        }
 
     }
 
@@ -41,7 +44,7 @@ class TodoAdapter(var todos : List<TodoDm>) : RecyclerView.Adapter<TodoAdapter.T
     interface ItemClickListener {
         fun onItemClick(todo: TodoDm)
         fun onDoneClick(todo : TodoDm)
-
+        fun onDeleteClick(todo : TodoDm)
     }
     class TodoViewHolder(val binding : ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
 
